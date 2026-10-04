@@ -590,7 +590,7 @@ These pass the 8-bit sum and end in `55`, but each is a known frame with two bit
 | `C5/16` | a C4/16 scan poll with b01 `C4→C5` (b13 still `3B`) |
 | `C8/32` | C0/32 with b01 `C0→C8` |
 
-`C7` and `30` frames reported from noisy captures have never appeared on a clean receiver. `C3/32` **is** real (see the frame catalogue).
+`C7` and `30` frames reported from noisy captures have never appeared on a clean receiver.
 
 ## 9. Method, sources and confidence
 

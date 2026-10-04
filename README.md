@@ -532,7 +532,7 @@ Indoor sensors: **(raw − 30) / 2 = °C**. Outdoor sensors: **(raw − 50) / 2 
 
 | Byte | Meaning | Decode | Tag |
 |---|---|---|---|
-| b03 | blower CMH, high byte | Senville app verified (m³/h) | ✅ |
+| b03 | blower CMH, high byte | **(m³/h) = b03 << 8 \| b04** | ✅ matches the Senville app |
 | b04 | blower CMH, low byte | | |
 | b05 | blower speed, high byte | **speed = b05 << 8 \| b06** | 🔶 |
 | b06 | blower speed, low byte | | |

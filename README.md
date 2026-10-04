@@ -25,9 +25,8 @@ The wall controller polls the indoor unit (IDU) with Midea XYE-style frames sent
 7. [Field maps (every byte)](#6-field-maps)
 8. [The 20 04 rotation and S1S2](#7-the-20-04-rotation-and-s1s2)
 9. [Phantom frames](#8-phantom-frames)
-10. [Open questions](#9-open-questions)
-11. [Method, sources and confidence](#10-method-sources-and-confidence)
-12. [Related projects](#related-projects)
+10. [Method, sources and confidence](#9-method-sources-and-confidence)
+11. [Related projects](#related-projects)
 
 ---
 
@@ -597,22 +596,7 @@ These pass the 8-bit sum and end in `55`, but each is a known frame with two bit
 
 `C7` and `30` frames reported from noisy captures have never appeared on a clean receiver. `C3/32` **is** real (see the frame catalogue).
 
----
-
-## 9. Open questions
-
-- [ ] Capture a **C3/16** request (the settings change that triggers C3/32).
-- [ ] Meaning of the `08 04` records and of the constant `04.00`.
-- [ ] AC/46 inner check: CRC-8 over b13–b41, or sum over b11–b41? **An AC/46 from another unit settles it.**
-- [ ] Physical position of the third coil sensor (S04_02 b19).
-- [ ] Which constant bytes move in **heat, defrost, high fan or a fault**.
-- [ ] Confirm the address scan / group control on a multi-IDU system.
-
-**Contributions welcome:** captures from other units, heating mode, defrost or error states are the fastest way to close these.
-
----
-
-## 10. Method, sources and confidence
+## 9. Method, sources and confidence
 
 - **Receiver:** an HBS transceiver (MM1192) feeding edge timestamps from an ESP32, decoded in Python. Only frames that pass their own checks were used. No corrected or reconstructed frames were used for any finding.
 - **Data:** about 3½ days of continuous capture (Sept 29 – Oct 3, 2026). The Sept 30 – Oct 3 set alone holds ~204,000 D0, ~108,000 each of C0/32 and C4/32, and ~6,100 of each 20 04 subtype.

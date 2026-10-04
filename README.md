@@ -431,7 +431,7 @@ Indoor sensors: **(raw − 30) / 2 = °C**. Outdoor sensors: **(raw − 50) / 2 
 
 | Byte | Meaning | Decode | Tag |
 |---|---|---|---|
-| b03 | blower target / 8 | 183 low, 206 medium, 0 idle (= S04_10 target ÷ 8) | 🟰 |
+| b03 | blower CMH / 8 | 183 low, 206 medium, 0 idle (= S04_10 (m³/h) ÷ 8) | 🔶 |
 | b04 | actual blower speed, scaled | ≈ speed / 6.7, 0–125 | 🔶 |
 | b05–b10 | — | always 0 | |
 | b11 | blower running | `0x40` on, `0x00` off | 🔶 |
@@ -547,8 +547,6 @@ Indoor sensors: **(raw − 30) / 2 = °C**. Outdoor sensors: **(raw − 50) / 2 
 | b22 | `0x1A` | constant | |
 | b23–b24 | `0B B8` | constant; = 3000 as a 16-bit value | ❔ |
 | b25–b30 | — | always 0 | |
-
-> **Practical use:** because the motor holds constant airflow, a dirty filter or blocked return shows up as **higher blower speed at the same fan level**. Comparing speed against a clean-filter baseline per fan level gives a working filter/restriction sensor. Tested with a towel over the return and with the filter removed.
 </details>
 
 ---

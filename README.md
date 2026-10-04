@@ -9,6 +9,8 @@ The wall controller polls the indoor unit (IDU) with Midea XYE-style frames sent
 
 > [!WARNING]
 > The bus carries ~19 V DC and powers the wall controller. Listening is safe with a proper receiver. **Transmitting** onto the bus can disrupt or damage the equipment.
+> 
+> Frame AC/46 carries a 28-character ASCII string. Could be a unique unit identification.
 
 ---
 

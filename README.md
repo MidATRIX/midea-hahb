@@ -574,7 +574,7 @@ Indoor sensors: **(raw − 30) / 2 = °C**. Outdoor sensors: **(raw − 50) / 2 
 | 06 | setpoint with compensation, ODU fan and EXV targets, run minutes and hours | 0001_51 (HPB) + IDU11 |
 | 07 | inverter: PID step, carrier, fan step | 0001_52 (HPC) |
 | 08 | ODU power, compressor state, cycle stage, target Hz | 0001_53 (HPD) |
-| 10 | indoor blower target, speed, power | IDU's own |
+| 10 | indoor blower (m³/h), speed, power | IDU's own |
 
 Matched against a live S1S2 log, each S1S2 byte matched within 3 s, ~5,100 records per subtype. Most mapped bytes agree **96–100 %** of the time; the remainder is timing between the two loggers. S1S2 byte names follow [midea-s1s2-rs485-monitor](https://github.com/MidATRIX/midea-s1s2-rs485-monitor).
 
@@ -596,7 +596,7 @@ These pass the 8-bit sum and end in `55`, but each is a known frame with two bit
 
 - **Receiver:** an HBS transceiver (MM1192) feeding edge timestamps from an ESP32, decoded in Python. Only frames that pass their own checks were used. No corrected or reconstructed frames were used for any finding.
 - **Data:** about 3½ days of continuous capture (Sept 29 – Oct 3, 2026). The Sept 30 – Oct 3 set alone holds ~204,000 D0, ~108,000 each of C0/32 and C4/32, and ~6,100 of each 20 04 subtype.
-- **Cross-checks:** a simultaneous S1S2 RS-485 log (Oct 1–2), the Senville app (power), the unit's own displays, and physical tests: a towel over the return, the filter removed, setpoint and fan changes.
+- **Cross-checks:** a simultaneous S1S2 RS-485 log (Oct 1–2), the Senville app (power), the unit's own displays, and other tests.
 
 | Tag | Meaning |
 |---|---|

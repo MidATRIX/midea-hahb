@@ -66,9 +66,9 @@ The wall controller polls the indoor unit (IDU) with Midea XYE-style frames sent
 Every byte is a **10-cell group**: a stuffed `0`, the high nibble, a stuffed `0`, the low nibble. Each nibble is sent least-significant bit first.
 
 ```
- 0  n n n n     0  n n n n
- ^  high nibble ^  low nibble      (each nibble LSB first)
- stuffed 0      stuffed 0
+    0  n n n n     0  n n n n
+    ^              ^
+    stuffed 0      stuffed 0    (each nibble LSB first)
 ```
 
 - **Why the stuffed 0:** it forces a mark at least every 5 cells, so a receiver keeps its clock through long runs of 1s.
@@ -306,7 +306,7 @@ Temps: **(raw − 40) / 2 = °C**.
 | b30 | sum | | |
 | b31 | `55` | | |
 
-- [HomeOps/ESPHome-Midea-XYE](https://github.com/HomeOps/ESPHome-Midea-XYE)
+- Field names cross-checked with [HomeOps/ESPHome-Midea-XYE](https://github.com/HomeOps/ESPHome-Midea-XYE)
 </details>
 
 <details>
@@ -330,7 +330,7 @@ Temps: **(raw − 40) / 2 = °C**.
 | b30 | sum | | |
 | b31 | `55` | | |
 
-- [HomeOps/ESPHome-Midea-XYE](https://github.com/HomeOps/ESPHome-Midea-XYE)
+- Field names cross-checked with [HomeOps/ESPHome-Midea-XYE](https://github.com/HomeOps/ESPHome-Midea-XYE)
 </details>
 
 <details>
@@ -346,8 +346,6 @@ Temps: **(raw − 40) / 2 = °C**.
 | b13 | `0x39` | 0xFF − cmd | 🟰 |
 | b14 | sum | | |
 | b15 | `55` | | |
-
-- [HomeOps/ESPHome-Midea-XYE](https://github.com/HomeOps/ESPHome-Midea-XYE)
 </details>
 
 <details>
@@ -534,8 +532,8 @@ Indoor sensors: **(raw − 30) / 2 = °C**. Outdoor sensors: **(raw − 50) / 2 
 
 | Byte | Meaning | Decode | Tag |
 |---|---|---|---|
-| b03 | blower target, high byte | **target = b03 << 8 \| b04**: 1470 low, 1650 medium, 0 idle (m³/h) | ✅ |
-| b04 | blower target, low byte | | |
+| b03 | blower CMH, high byte | Senville app verified (m³/h) | ✅ |
+| b04 | blower CMH, low byte | | |
 | b05 | blower speed, high byte | **speed = b05 << 8 \| b06** | 🔶 |
 | b06 | blower speed, low byte | | |
 | b07–b08 | copy of b05–b06 | equal in 100 % | 🟰 |
@@ -618,4 +616,4 @@ These pass the 8-bit sum and end in `55`, but each is a known frame with two bit
 - [HomeOps/ESPHome-Midea-XYE](https://github.com/HomeOps/ESPHome-Midea-XYE): an ESPHome XYE.
 - [fmck3516/midea-telemetry-esphome](https://github.com/fmck3516/midea-telemetry-esphome): Midea ODU test-port telemetry.
 
-*Maintained by [MidATRIX](https://github.com/MidATRIX).*
+*Maintained by [MidATRIX](https://github.com/MidATRIX). Unofficial; not affiliated with Midea. Use at your own risk — see [LICENSE](LICENSE.md).*
